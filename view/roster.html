@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Nashville Predators Roster</title>
+</head>
+<body>
+<h2>Nashville Predators Roster</h2>
+<style>
+  tr {
+    height: 30px;
+  }
+
+  tbody tr:nth-child(odd) {
+    background-color: lightgray;
+  }
+</style>
+<table>
+  {{range .}}
+  <tr>
+    <td style="width:200px;"><a href="/playerInfo?id={{.Person.Id}}">{{.Person.FullName}}</a></td>
+    <td style="width:200px;">{{.Position.Name}}</td>
+    <td>{{.JerseyNumber}}</td>
+  </tr>
+  {{end}}
+</table>
+</body>
+</html>

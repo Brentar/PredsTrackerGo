@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        tbody td:nth-child(odd) {
+            width: 90px;
+        }
+    </style>
+</head>
+<body>
+<h1>{{.FullName}}</h1>
+<img style="-webkit-user-select: none;margin: auto;background-color: hsl(0, 0%, 90%);transition: background-color 300ms;"
+     src="https://nhl.bamcontent.com/images/headshots/current/168x168/{{.Id}}.jpg">
+<table>
+    <tr>
+        <td>Age:</td>
+        <td>{{.CurrentAge}}</td>
+    </tr>
+    <tr>
+        <td>Position:</td>
+        <td>{{.PrimaryPosition.Name}}</td>
+    </tr>
+    <tr>
+        <td>Shoots:</td>
+        <td>{{.ShootsCatches}}</td>
+    </tr>
+    <tr>
+        <td>Weight:</td>
+        <td>{{.Weight}}</td>
+    </tr>
+    <tr>
+        <td>Height:</td>
+        <td>{{.Height}}</td>
+    </tr>
+    <tr>
+        <td>Number:</td>
+        <td>{{.PrimaryNumber}}</td>
+    </tr>
+    <tr>
+        <td>Birth Date:</td>
+        <td>{{.BirthDate}}</td>
+    </tr>
+    <tr>
+        <td>Born in:</td>
+        <td>{{.BirthCity}}, {{.BirthCountry}}</td>
+    </tr>
+</table>
+</body>
+</html>
