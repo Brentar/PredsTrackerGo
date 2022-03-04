@@ -1,6 +1,8 @@
-package model
+package models
 
-import "time"
+import (
+	"time"
+)
 
 type ScheduleResponse struct {
 	Copyright    string         `json:"copyright"`
@@ -8,7 +10,7 @@ type ScheduleResponse struct {
 	TotalEvents  int            `json:"totalEvents"`
 	TotalGames   int            `json:"totalGames"`
 	TotalMatches int            `json:"totalMatches"`
-	Dates        []ScheduleDate `json:"dates"'`
+	Dates        []ScheduleDate `json:"dates"`
 	MetaData     struct {
 		TimeStamp string `json:"timeStamp"`
 	} `json:"metaData"`
@@ -16,21 +18,22 @@ type ScheduleResponse struct {
 }
 
 type ScheduleDate struct {
-	Date         string         `json:"date"`
-	TotalItems   int            `json:"totalItems"`
-	TotalEvents  int            `json:"totalEvents"`
-	TotalGames   int            `json:"totalGames"`
-	Games        []ScheduleGame `json:"games"`
-	TotalMatches int            `json:"totalMatches"`
-	Events       []interface{}  `json:"events"`
-	Matches      []interface{}  `json:"matches"`
+	Date         string          `json:"date"`
+	TotalItems   int             `json:"totalItems"`
+	TotalEvents  int             `json:"totalEvents"`
+	TotalGames   int             `json:"totalGames"`
+	Games        []ScheduledGame `json:"games"`
+	TotalMatches int             `json:"totalMatches"`
+	Events       []interface{}   `json:"events"`
+	Matches      []interface{}   `json:"matches"`
 }
 
-type ScheduleGame struct {
-	GamePk   int       `json:"gamePk"`
-	Link     string    `json:"link"`
-	GameType string    `json:"gameType"`
-	Season   string    `json:"season"`
+type ScheduledGame struct {
+	GamePk   int    `json:"gamePk"`
+	Link     string `json:"link"`
+	GameType string `json:"gameType"`
+	Season   string `json:"season"`
+	Date     string
 	GameDate time.Time `json:"gameDate"`
 	Status   struct {
 		AbstractGameState string `json:"abstractGameState"`
@@ -48,11 +51,7 @@ type ScheduleGame struct {
 				Type   string `json:"type"`
 			} `json:"leagueRecord"`
 			Score int `json:"score"`
-			Team  struct {
-				Id   int    `json:"id"`
-				Name string `json:"name"`
-				Link string `json:"link"`
-			} `json:"team"`
+			Team  ScheduleTeam
 		} `json:"away"`
 		Home struct {
 			LeagueRecord struct {
@@ -62,11 +61,7 @@ type ScheduleGame struct {
 				Type   string `json:"type"`
 			} `json:"leagueRecord"`
 			Score int `json:"score"`
-			Team  struct {
-				Id   int    `json:"id"`
-				Name string `json:"name"`
-				Link string `json:"link"`
-			} `json:"team"`
+			Team  ScheduleTeam
 		} `json:"home"`
 	} `json:"teams"`
 	Venue struct {
